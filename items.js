@@ -15,29 +15,48 @@ document.addEventListener("DOMContentLoaded",function(event){
     image.setAttribute('class','item-low');
     image.style.height = '60px';
 
-    return image
+    return image;
   };
 
   function fillItems(){
       var windowWidth = 600;
       var windowHeight = 600;
 
-      for (var i=0; i<40; i++){
+      for (var i=0; i<=2; i++){
         var x = Math.ceil(Math.random()* windowWidth);
         var y = Math.ceil(Math.random()* windowHeight);
-        console.log(x);
-        console.log(y);
 
         var lowItems = low();
         console.log(lowItems);
 
         lowItems.style.top = x+'px';
         lowItems.style.left = y+'px';
+
         document.getElementById('app').append(lowItems);
-      }
+      };
+      return lowItems;
   };
 
-  document.getElementById('item-maker').addEventListener('click',fillItems);
-  document.getElementsByClassName('item-low').addEventListener('click', removeItem);
+
+  function removeItem(){
+    alert('you clicked an item');
+  };
+
+  document.getElementById('item-maker').addEventListener('click',function(){
+    fillItems();
+    var items = document.getElementsByClassName('item-low');
+
+    var itemArray = [];
+    for (var i=0; i<items.length; i++){
+      itemArray.push(items[i]);
+    };
+
+    itemArray.forEach(x => x.addEventListener('click',removeItem));
+
+    console.log(itemArray);
+
+  });
+
+
 
 })
