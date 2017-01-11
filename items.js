@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded",function(event){
+  var windowWidth = 600;
+  var windowHeight = 600;
+  var playing = false;
+
   // create items worth 10 to 30 points
   function low(){
     var src = [
@@ -19,30 +23,41 @@ document.addEventListener("DOMContentLoaded",function(event){
   };
 
   function fillItems(){
-      var windowWidth = 600;
-      var windowHeight = 600;
+    for (var i=0; i<=2; i++){
+      var x = Math.ceil(Math.random()* windowWidth);
+      var y = Math.ceil(Math.random()* windowHeight);
 
-      for (var i=0; i<=2; i++){
-        var x = Math.ceil(Math.random()* windowWidth);
-        var y = Math.ceil(Math.random()* windowHeight);
+      var lowItem = low();
 
-        var lowItems = low();
-        console.log(lowItems);
+      lowItem.style.top = x+'px';
+      lowItem.style.left = y+'px';
 
-        lowItems.style.top = x+'px';
-        lowItems.style.left = y+'px';
-
-        document.getElementById('app').append(lowItems);
-      };
-      return lowItems;
+      document.getElementById('app').append(lowItem);
+    };
   };
 
+  function addNewItem(){
+    var newItem = low();
+
+    var x = Math.ceil(Math.random()* windowWidth);
+    var y = Math.ceil(Math.random()* windowHeight);
+
+    newItem.style.top = x+'px';
+    newItem.style.left = y+'px';
+
+    document.getElementById('app').append(newItem);
+    newItem.addEventListener('click',removeItem);
+  };
 
   function removeItem(){
-    alert('you clicked an item');
+    // temporary code for adding points
+    this.remove();
+    addNewItem();
   };
 
+  // fill div with
   document.getElementById('item-maker').addEventListener('click',function(){
+    playing = true;
     fillItems();
     var items = document.getElementsByClassName('item-low');
 
@@ -52,11 +67,5 @@ document.addEventListener("DOMContentLoaded",function(event){
     };
 
     itemArray.forEach(x => x.addEventListener('click',removeItem));
-
-    console.log(itemArray);
-
   });
-
-
-
 })
