@@ -24,15 +24,7 @@ document.addEventListener("DOMContentLoaded",function(event){
 
   function fillItems(){
     for (var i=0; i<=2; i++){
-      var x = Math.ceil(Math.random()* windowWidth);
-      var y = Math.ceil(Math.random()* windowHeight);
-
-      var lowItem = low();
-
-      lowItem.style.top = x+'px';
-      lowItem.style.left = y+'px';
-
-      document.getElementById('app').append(lowItem);
+      addNewItem();
     };
   };
 
@@ -55,17 +47,9 @@ document.addEventListener("DOMContentLoaded",function(event){
     addNewItem();
   };
 
-  // fill div with
+  // start game
   document.getElementById('item-maker').addEventListener('click',function(){
     playing = true;
     fillItems();
-    var items = document.getElementsByClassName('item-low');
-
-    var itemArray = [];
-    for (var i=0; i<items.length; i++){
-      itemArray.push(items[i]);
-    };
-
-    itemArray.forEach(x => x.addEventListener('click',removeItem));
   });
 })
