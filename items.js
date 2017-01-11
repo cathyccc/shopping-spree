@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded",function(event){
     return image;
   };
 
-  function fillItems(){
+  function startGame(){
     for (var i=0; i<=2; i++){
       addNewItem();
     };
@@ -50,6 +50,6 @@ document.addEventListener("DOMContentLoaded",function(event){
   // start game
   document.getElementById('item-maker').addEventListener('click',function(){
     playing = true;
-    fillItems();
+    startGame();
   });
 })
