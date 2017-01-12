@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded",function(event){
   var playing = false;
   var score = 0;
 
-  // create items worth 5 to 20 points
+  // create items worth 5 to 10 points
   function low(){
 
     // generate random images for low scoring items
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded",function(event){
     var imageRandom = Math.round(Math.random() * 3);
 
     // points
-    var pointRandom = pointGenerate(5,20);
+    var pointRandom = pointGenerate(5,10);
 
     // mounting image onto gameboard
     var image = imageDiv(pointRandom);
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded",function(event){
     return image;
   };
 
-  // create items worth 21 to 35 points
+  // create items worth 15 to 20 points
   function medium(){
     var src = [
       "http://image.flaticon.com/icons/svg/214/214344.svg",
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded",function(event){
       "http://image.flaticon.com/icons/svg/196/196526.svg"
     ];
     var imageRandom = Math.round(Math.random() * 3);
-    var pointRandom = pointGenerate(21,35);
+    var pointRandom = pointGenerate(15,20);
 
     var image = imageDiv(pointRandom);
     image.setAttribute('src',src[imageRandom]);
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded",function(event){
     return image;
   };
 
-  // create items worth 36 to 40 points
+  // create items worth 30 to 50 points
   function high(){
     var src = [
       "http://image.flaticon.com/icons/svg/307/307579.svg",
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded",function(event){
       "http://image.flaticon.com/icons/svg/141/141087.svg"
     ];
     var imageRandom = Math.round(Math.random() * 3);
-    var pointRandom = pointGenerate(26,40);
+    var pointRandom = pointGenerate(30,50);
 
     var image = imageDiv(pointRandom);
     image.setAttribute('src',src[imageRandom]);
