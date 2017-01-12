@@ -98,12 +98,12 @@ document.addEventListener("DOMContentLoaded",function(event){
   function addNewItem(){
     var newItem = occurance();
 
-    var x = Math.ceil(Math.random()* 87);
-    var y = Math.ceil(Math.random()* 87);
+    var x = Math.round(Math.random() * (97 + 3) - 3);
+    var y = Math.round(Math.random() * (75));
 
     while (x < 14 && y < 6){
-      var x = Math.ceil(Math.random()* 87);
-      var y = Math.ceil(Math.random()* 78);
+      var x = Math.round(Math.random() * (97 + 3) - 3);
+      var y = Math.ceil(Math.random()* 75);
     };
 
     newItem.style.left = x + '%';
@@ -135,10 +135,25 @@ document.addEventListener("DOMContentLoaded",function(event){
     }
   };
 
+  // create shopping cart
+  function displayCart(){
+    var cartDiv = document.createElement('div');
+    cartDiv.setAttribute('id','cartArea');
+    var imgCart = document.createElement('img');
+    imgCart.style.height = "50px";
+    imgCart.style.padding = "20px";
+    imgCart.setAttribute('src',"http://image.flaticon.com/icons/svg/116/116383.svg");
+    cartDiv.append(imgCart);
+
+    console.log(imgCart);
+    document.getElementById('app').append(cartDiv);
+  };
+
   // start game
   document.getElementById('item-maker').addEventListener('click',function(){
     playing = true;
     displayScore();
+    displayCart();
     startGame();
   });
 })
