@@ -21,9 +21,46 @@ document.addEventListener("DOMContentLoaded",function(event){
     var image = imageDiv(pointRandom);
     image.setAttribute('src',src[imageRandom]);
     image.setAttribute('class','item-low');
-
+    image.style.height = '60px';
     return image;
   };
+
+  // create items worth 21 to 35 points
+  function medium(){
+    var src = [
+      "http://image.flaticon.com/icons/svg/214/214344.svg",
+      "http://image.flaticon.com/icons/svg/169/169752.svg",
+      "http://image.flaticon.com/icons/svg/289/289008.svg",
+      "http://image.flaticon.com/icons/svg/196/196526.svg"
+    ];
+    var imageRandom = Math.round(Math.random() * 3);
+    var pointRandom = pointGenerate(21,35);
+
+    var image = imageDiv(pointRandom);
+    image.setAttribute('src',src[imageRandom]);
+    image.setAttribute('class','item-med');
+    image.style.height = '50px';
+    return image;
+  };
+
+  // create items worth 36 to 40 points
+  function high(){
+    var src = [
+      "http://image.flaticon.com/icons/svg/307/307579.svg",
+      "http://image.flaticon.com/icons/svg/124/124097.svg",
+      "http://image.flaticon.com/icons/svg/141/141064.svg",
+      "http://image.flaticon.com/icons/svg/141/141087.svg"
+    ];
+    var imageRandom = Math.round(Math.random() * 3);
+    var pointRandom = pointGenerate(26,40);
+
+    var image = imageDiv(pointRandom);
+    image.setAttribute('src',src[imageRandom]);
+    image.setAttribute('class','item-high');
+    image.style.height = '40px';
+    return image;
+  };
+
 
   // points generator
   function pointGenerate(minPts,maxPts){
@@ -35,7 +72,6 @@ document.addEventListener("DOMContentLoaded",function(event){
   function imageDiv(pointRandom){
     var image = document.createElement('img');
     image.setAttribute('data-point',pointRandom);
-    image.style.height = '60px';
     return image;
   };
 
