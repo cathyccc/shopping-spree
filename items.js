@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded",function(event){
   };
 
   function startGame(){
-    for (var i=0; i<=10; i++){
+    for (var i=1; i<=20; i++){
       addNewItem();
     };
   };
@@ -33,7 +33,12 @@ document.addEventListener("DOMContentLoaded",function(event){
     var newItem = low();
 
     var x = Math.ceil(Math.random()* 87);
-    var y = Math.ceil(Math.random()* 78);
+    var y = Math.ceil(Math.random()* 87);
+
+    while (x < 14 && y < 6){
+      var x = Math.ceil(Math.random()* 87);
+      var y = Math.ceil(Math.random()* 78);
+    };
 
     newItem.style.left = x + '%';
     newItem.style.top = y + '%';

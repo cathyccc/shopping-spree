@@ -5,6 +5,8 @@
   position: relative;
   height: 85vh ;
   width: 90vw ;
+  min-width: 500px;
+  min-height: 500px;
   overflow: hidden;
 }
 
