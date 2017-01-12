@@ -1,7 +1,10 @@
 #app{
+  border: 1px solid gray;
+  margin: auto;
+  padding: 10px;
   position: relative;
-  height: 660px;
-  width: 660px;
+  height: 85vh ;
+  width: 90vw ;
   overflow: hidden;
 }
 
