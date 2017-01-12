@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded",function(event){
 
   // create items worth 5 to 20 points
   function low(){
+
     // generate random images for low scoring items
     var src = [
       "http://image.flaticon.com/icons/svg/135/135739.svg",
@@ -14,17 +15,27 @@ document.addEventListener("DOMContentLoaded",function(event){
     var imageRandom = Math.round(Math.random() * 3);
 
     // points
-    var maxPts = 20;
-    var minPts = 5;
-    var pointRandom = Math.round(Math.random() * (maxPts - minPts) + 5);
+    var pointRandom = pointGenerate(5,20);
 
     // mounting image onto gameboard
-    var image = document.createElement('img');
+    var image = imageDiv(pointRandom);
     image.setAttribute('src',src[imageRandom]);
     image.setAttribute('class','item-low');
-    image.style.height = '60px';
-    image.setAttribute('data-point',pointRandom);
 
+    return image;
+  };
+
+  // points generator
+  function pointGenerate(minPts,maxPts){
+    var points = Math.round(Math.random() * (maxPts - minPts) + 5);
+    return points
+  };
+
+  // mount image
+  function imageDiv(pointRandom){
+    var image = document.createElement('img');
+    image.setAttribute('data-point',pointRandom);
+    image.style.height = '60px';
     return image;
   };
 
@@ -57,7 +68,6 @@ document.addEventListener("DOMContentLoaded",function(event){
   // logic when object removed
   function removeItem(){
     score += parseInt(this.dataset.point);
-    console.log(this.dataset.point);
     displayScore();
     this.remove();
     addNewItem();
