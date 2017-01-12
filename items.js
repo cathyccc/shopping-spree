@@ -61,10 +61,9 @@ document.addEventListener("DOMContentLoaded",function(event){
     return image;
   };
 
-
   // points generator
   function pointGenerate(minPts,maxPts){
-    var points = Math.round(Math.random() * (maxPts - minPts) + 5);
+    var points = Math.round(Math.random() * (maxPts - minPts) + minPts);
     return points
   };
 
@@ -77,14 +76,27 @@ document.addEventListener("DOMContentLoaded",function(event){
 
   // setting up the game
   function startGame(){
-    for (var i=1; i<=20; i++){
+    for (var i=1; i<=60; i++){
       addNewItem();
     };
   };
 
+  // randomly generate number from 0-5 (med = 0,1 / low = 2,3,4,5 / high = 6)
+  function occurance(){
+    var occurance = Math.round(Math.random() * 6);
+    if (occurance <= 1){
+      var newItem = medium();
+    } else if (occurance === 6){
+      var newItem = high();
+    } else {
+      var newItem = low();
+    };
+    return newItem;
+  };
+
   // adding a single item
   function addNewItem(){
-    var newItem = low();
+    var newItem = occurance();
 
     var x = Math.ceil(Math.random()* 87);
     var y = Math.ceil(Math.random()* 87);
@@ -104,6 +116,7 @@ document.addEventListener("DOMContentLoaded",function(event){
   // logic when object removed
   function removeItem(){
     score += parseInt(this.dataset.point);
+    console.log(this.dataset.point);
     displayScore();
     this.remove();
     addNewItem();

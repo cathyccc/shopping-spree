@@ -10,6 +10,8 @@
   overflow: hidden;
 }
 
-.item-low{
+.item-low,
+.item-med,
+.item-high {
   position: absolute;
 }
