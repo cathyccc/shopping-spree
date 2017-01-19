@@ -23,13 +23,16 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: #ffeb3b;
   text-align: center;
+  background-color: #ffeb3b;
 }
 
-/*.drag-drop{
-  -webkit-transform: translate(0px, 0px);
-          transform: translate(0px, 0px);
+.outsidecart{
+  height: 50px;
+  padding: 20px;
+}
 
-  transition: background-color 0.3s;
-}*/
+.insidecart img{
+  height: 60px;
+  padding: 15px;
+}

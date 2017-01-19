@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded",function(event){
 
   // setting up the game
   function startGame(){
-    for (var i=1; i<=2; i++){
+    for (var i=1; i<=60; i++){
       addNewItem();
     };
   };
@@ -113,18 +113,41 @@ document.addEventListener("DOMContentLoaded",function(event){
     document.getElementById('app').append(newItem);
 
     dragItem();
+    setDropZone();
   };
 
   function dragItem(){
     interact('.draggable').draggable({
-      // inertia: true,
-      // restrict: {
-      //   restriction: "parent",
-      //   endOnly: true,
-      //   elementRect: {top:0, left:0, bottom: 1, right: 1}
-      // },
+      inertia: true,
+      restrict: {
+        restriction: "parent",
+        endOnly: true,
+        elementRect: {top:0, left:0, bottom: 1, right: 1}
+      },
       onmove: dragMoveListener
     })
+  };
+
+  function setDropZone(){
+    interact('#cartArea').dropzone({
+      accept: '#item',
+      overlap: 0.75, //percentage of element overlap
+      ondragenter: function(event){
+        var cart = event.target;
+        cart.classList.add('insidecart');
+      },
+      ondragleave: function (event) {
+        var cart = event.target;
+        cart.classList.remove('insidecart');
+      },
+      ondrop: function(event){
+        var droppedItem = event.relatedTarget;
+        score += parseInt(droppedItem.dataset.point);
+        displayScore();
+        droppedItem.remove();
+        addNewItem();
+      }
+    });
   };
 
   function dragMoveListener(event){
@@ -140,13 +163,13 @@ document.addEventListener("DOMContentLoaded",function(event){
 
 
   // logic when object removed
-  function removeItem(){
-    score += parseInt(this.dataset.point);
-    console.log(this.dataset.point);
-    displayScore();
-    this.remove();
-    addNewItem();
-  };
+  // function removeItem(){
+  //   score += parseInt(this.dataset.point);
+  //   console.log(this.dataset.point);
+  //   displayScore();
+  //   this.remove();
+  //   addNewItem();
+  // };
 
   // update score
   function displayScore(){
@@ -166,8 +189,9 @@ document.addEventListener("DOMContentLoaded",function(event){
     var cartDiv = document.createElement('div');
     cartDiv.setAttribute('id','cartArea');
     var imgCart = document.createElement('img');
-    imgCart.style.height = "50px";
-    imgCart.style.padding = "20px";
+    imgCart.className = "outsidecart";
+    // imgCart.style.height = "50px";
+    // imgCart.style.padding = "20px";
     imgCart.setAttribute('src',"http://image.flaticon.com/icons/svg/116/116383.svg");
     cartDiv.append(imgCart);
 
