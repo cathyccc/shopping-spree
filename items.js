@@ -141,6 +141,7 @@ document.addEventListener("DOMContentLoaded",function(event){
         cart.classList.remove('insidecart');
       },
       ondrop: function(event){
+        console.log(event);
         var droppedItem = event.relatedTarget;
         score += parseInt(droppedItem.dataset.point);
         displayScore();
@@ -190,17 +191,24 @@ document.addEventListener("DOMContentLoaded",function(event){
     cartDiv.setAttribute('id','cartArea');
     var imgCart = document.createElement('img');
     imgCart.className = "outsidecart";
-    // imgCart.style.height = "50px";
-    // imgCart.style.padding = "20px";
     imgCart.setAttribute('src',"http://image.flaticon.com/icons/svg/116/116383.svg");
     cartDiv.append(imgCart);
 
     document.getElementById('app').append(cartDiv);
   };
 
+  function removeStart(){
+    if (playing == true){
+      document.getElementById('item-maker').style.display = "none";
+    } else {
+      document.getElementById('item-maker').style.display = "none";
+    }
+  }
+
   // start game
   document.getElementById('item-maker').addEventListener('click',function(){
     playing = true;
+    removeStart();
     displayScore();
     displayCart();
     startGame();

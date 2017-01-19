@@ -1,20 +1,46 @@
-#app{
-  border: 1px solid gray;
-  margin: auto;
-  padding: 10px;
-  position: relative;
-  height: 85vh ;
-  width: 90vw ;
-  min-width: 500px;
-  min-height: 500px;
-  overflow: hidden;
+body{
+  margin: 0px;
   background-image: url("doodlegrid2.png");
+  background-repeat: repeat;
+  height: 100vh;
+  min-height: 500px;
+  min-width: 360px;
+}
+
+#app{
+  margin: auto;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  /*min-width: 500px;
+  min-height: 500px;*/
+  overflow: hidden;
+  text-align: center;
 }
 
 .item-low,
 .item-med,
 .item-high {
   position: absolute;
+}
+
+#item-maker{
+  display: inline-block;
+}
+
+
+.start-button{
+  line-height: 100vh;
+  text-decoration: none;
+  color: #f30f36;
+  font-family: 'Amatic SC', cursive;
+  font-size: 6em;
+  padding: 0 15px;
+}
+
+#currentScore{
+  text-align: left;
+  margin: 15px;
 }
 
 #cartArea{
