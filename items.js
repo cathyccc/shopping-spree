@@ -186,11 +186,11 @@ document.addEventListener("DOMContentLoaded",function(event){
     if (!document.getElementById('currentScore')){
       var scoreDiv = document.createElement('div');
       scoreDiv.setAttribute('id','currentScore')
-      scoreDiv.append(`score: ${score}`);
+      scoreDiv.append(`score: $${score}`);
       document.getElementById('app').append(scoreDiv);
     } else {
       var scoreDiv = document.getElementById('currentScore');
-      scoreDiv.innerHTML = `score: ${score}`;
+      scoreDiv.innerHTML = `score: $${score}`;
     }
   };
 
@@ -198,10 +198,21 @@ document.addEventListener("DOMContentLoaded",function(event){
   function displayTime(){
     var timer = document.createElement('div');
     timer.setAttribute('id',"timer");
-    timer.append(`time: ${time}`);
+    timer.className = "showTime";
+    timer.innerHTML = `time left<div class='time'>${time}</div>`;
     document.getElementById('app').append(timer);
   };
 
+  function updateTime(){
+    var timeDiv = document.getElementById('timer');
+    var newTime = time-1;
+    time = newTime;
+    timeDiv.innerHTML = `time left<div class='time'>${time}</div>`;
+
+    if (time < 0){
+      endGame();
+    }
+  };
 
   // create shopping cart
   function displayCart(){
@@ -254,16 +265,6 @@ document.addEventListener("DOMContentLoaded",function(event){
     timerCountdown = setInterval(updateTime,1000);
   };
 
-  function updateTime(){
-    var timeDiv = document.getElementById('timer');
-    var newTime = time-1;
-    time = newTime;
-    document.getElementById('timer').innerHTML = `time: ${time}`;
-
-    if (time == 0){
-      endGame();
-    }
-  };
 
   function endGame(){
     var clear = clearInterval(timerCountdown);
