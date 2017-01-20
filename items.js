@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded",function(event){
   var playing = false;
-  var score = 0;
+  var score;
   var time;
   var timerCountdown;
 
@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded",function(event){
 
   // setting up the game
   function startGame(){
+    score = 0;
     var playTime = 10;
     time = playTime;
     playing = true;
@@ -238,7 +239,7 @@ document.addEventListener("DOMContentLoaded",function(event){
     link.addEventListener('click', startGame);
 
     document.getElementById('app').append(link);
-  }
+  };
 
   // remove start button on play
   function removeStart(){
@@ -259,7 +260,7 @@ document.addEventListener("DOMContentLoaded",function(event){
     link.append(button);
     link.addEventListener('click',endGame);
     document.getElementById('app').append(link);
-  }
+  };
 
   function countdown(){
     timerCountdown = setInterval(updateTime,1000);
@@ -271,7 +272,7 @@ document.addEventListener("DOMContentLoaded",function(event){
     console.log(timerCountdown);
     document.getElementById('app').innerHTML = "";
     displayStart();
-  }
+  };
 
   // append start button
   displayStart();
