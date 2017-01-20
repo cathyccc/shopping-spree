@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded",function(event){
   var playing = false;
   var score = 0;
+  var time;
+  var timerCountdown;
 
   // create items worth 5 to 10 points
   function low(){
@@ -77,6 +79,15 @@ document.addEventListener("DOMContentLoaded",function(event){
 
   // setting up the game
   function startGame(){
+    var playTime = 10;
+    time = playTime;
+    playing = true;
+    removeStart();
+    displayScore();
+    displayCart();
+    displayQuit();
+    displayTime();
+    countdown();
     for (var i=1; i<=60; i++){
       addNewItem();
     };
@@ -141,7 +152,6 @@ document.addEventListener("DOMContentLoaded",function(event){
         cart.classList.remove('insidecart');
       },
       ondrop: function(event){
-        console.log(event);
         var droppedItem = event.relatedTarget;
         score += parseInt(droppedItem.dataset.point);
         displayScore();
@@ -162,7 +172,6 @@ document.addEventListener("DOMContentLoaded",function(event){
     target.setAttribute('data-y', y);
   };
 
-
   // logic when object removed
   // function removeItem(){
   //   score += parseInt(this.dataset.point);
@@ -177,13 +186,22 @@ document.addEventListener("DOMContentLoaded",function(event){
     if (!document.getElementById('currentScore')){
       var scoreDiv = document.createElement('div');
       scoreDiv.setAttribute('id','currentScore')
-      scoreDiv.append("Score: " + score);
+      scoreDiv.append(`score: ${score}`);
       document.getElementById('app').append(scoreDiv);
     } else {
       var scoreDiv = document.getElementById('currentScore');
-      scoreDiv.innerHTML = "Score: " + score;
+      scoreDiv.innerHTML = `score: ${score}`;
     }
   };
+
+  // show timer
+  function displayTime(){
+    var timer = document.createElement('div');
+    timer.setAttribute('id',"timer");
+    timer.append(`time: ${time}`);
+    document.getElementById('app').append(timer);
+  };
+
 
   // create shopping cart
   function displayCart(){
@@ -197,20 +215,63 @@ document.addEventListener("DOMContentLoaded",function(event){
     document.getElementById('app').append(cartDiv);
   };
 
+  // display start button
+  function displayStart(){
+    var link = document.createElement('a');
+    var button = document.createElement('div');
+    link.setAttribute("href","#");
+    link.className = "start-button";
+    link.setAttribute("id","item-maker");
+    button.innerHTML = "start";
+    link.append(button);
+    link.addEventListener('click', startGame);
+
+    document.getElementById('app').append(link);
+  }
+
+  // remove start button on play
   function removeStart(){
-    if (playing == true){
-      document.getElementById('item-maker').style.display = "none";
-    } else {
-      document.getElementById('item-maker').style.display = "none";
+    var button = document.getElementById('item-maker');
+    if (playing = true){
+      button.style.display = "none";
+    }
+  };
+
+  // quit button
+  function displayQuit(){
+    var link = document.createElement('a');
+    var button = document.createElement('div');
+    link.setAttribute("href","#");
+    link.className = "exit-button";
+    link.setAttribute("id","exitButton");
+    button.innerHTML = "exit";
+    link.append(button);
+
+    document.getElementById('app').append(link);
+  }
+
+  function countdown(){
+    timerCountdown = setInterval(updateTime,1000);
+  };
+
+  function updateTime(){
+    var timeDiv = document.getElementById('timer');
+    var newTime = time-1;
+    time = newTime;
+    document.getElementById('timer').innerHTML = `time: ${time}`;
+
+    checkTime();
+  };
+
+  function checkTime(){
+    if (time == 0){
+      var clear = clearInterval(timerCountdown);
+      console.log(timerCountdown);
+      document.getElementById('app').innerHTML = "";
+      displayStart();
     }
   }
 
-  // start game
-  document.getElementById('item-maker').addEventListener('click',function(){
-    playing = true;
-    removeStart();
-    displayScore();
-    displayCart();
-    startGame();
-  });
-})
+  // append start button
+  displayStart();
+});

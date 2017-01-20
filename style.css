@@ -28,6 +28,9 @@ body{
   display: inline-block;
 }
 
+#item-maker{
+  display: inline-block;
+}
 
 .start-button{
   line-height: 100vh;
@@ -38,8 +41,24 @@ body{
   padding: 0 15px;
 }
 
+.exit-button{
+  display: inline-block;
+  float: right;
+  font-family: 'Amatic SC', cursive;
+  color: #f30f36;
+  font-size: 3em;
+  padding-right: 10px;
+  text-decoration: none;
+}
+
 #currentScore{
-  text-align: left;
+  display: inline-block;
+  float: left;
+  margin: 15px;
+}
+
+#timer{
+  display: inline-block;
   margin: 15px;
 }
 
