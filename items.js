@@ -246,7 +246,7 @@ document.addEventListener("DOMContentLoaded",function(event){
     link.setAttribute("id","exitButton");
     button.innerHTML = "exit";
     link.append(button);
-
+    link.addEventListener('click',endGame);
     document.getElementById('app').append(link);
   }
 
@@ -260,16 +260,16 @@ document.addEventListener("DOMContentLoaded",function(event){
     time = newTime;
     document.getElementById('timer').innerHTML = `time: ${time}`;
 
-    checkTime();
+    if (time == 0){
+      endGame();
+    }
   };
 
-  function checkTime(){
-    if (time == 0){
-      var clear = clearInterval(timerCountdown);
-      console.log(timerCountdown);
-      document.getElementById('app').innerHTML = "";
-      displayStart();
-    }
+  function endGame(){
+    var clear = clearInterval(timerCountdown);
+    console.log(timerCountdown);
+    document.getElementById('app').innerHTML = "";
+    displayStart();
   }
 
   // append start button
