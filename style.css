@@ -33,12 +33,11 @@ body{
 }
 
 .start-button{
-  line-height: 100vh;
+  /*line-height: 100vh;*/
   text-decoration: none;
   color: #f30f36;
   font-family: 'Amatic SC', cursive;
   font-size: 6em;
-  padding: 0 15px;
 }
 
 .exit-button{
@@ -91,4 +90,17 @@ body{
 .insidecart img{
   height: 60px;
   padding: 15px;
+}
+
+.recent-score{
+  font-size: 3em;
+  font-family: 'Amatic SC', cursive;
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+.start-point{
+  position: relative;
+  top: 47%;
+  transform: translateY(-53%);
 }

@@ -229,21 +229,25 @@ document.addEventListener("DOMContentLoaded",function(event){
 
   // display start button
   function displayStart(){
+    var beginDiv = document.createElement('div');
     var link = document.createElement('a');
     var button = document.createElement('div');
+    beginDiv.setAttribute('id','startPoint');
+    beginDiv.className = 'start-point';
     link.setAttribute("href","#");
     link.className = "start-button";
     link.setAttribute("id","item-maker");
     button.innerHTML = "start";
     link.append(button);
+    beginDiv.append(link);
     link.addEventListener('click', startGame);
 
-    document.getElementById('app').append(link);
+    document.getElementById('app').append(beginDiv);
   };
 
   // remove start button on play
   function removeStart(){
-    var button = document.getElementById('item-maker');
+    var button = document.getElementById('startPoint');
     if (playing = true){
       button.style.display = "none";
     }
@@ -266,12 +270,22 @@ document.addEventListener("DOMContentLoaded",function(event){
     timerCountdown = setInterval(updateTime,1000);
   };
 
+  // display most recent score
+  function displayRecent(){
+    var recentDiv = document.createElement('div');
+    recentDiv.setAttribute('id','recentScore');
+    recentDiv.className = "recent-score";
+    recentDiv.innerHTML =`total value: $${score}`;
+    console.log(recentDiv);
+    document.getElementById('startPoint').append(recentDiv);
+  };
 
   function endGame(){
     var clear = clearInterval(timerCountdown);
     console.log(timerCountdown);
     document.getElementById('app').innerHTML = "";
     displayStart();
+    displayRecent();
   };
 
   // append start button
