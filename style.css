@@ -63,8 +63,8 @@ body{
   padding-top: 10px;
   font-weight: bold;
   position: absolute;
-  left: 53%;
-  transform: translateX(-53%);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .time{
@@ -74,23 +74,20 @@ body{
 
 #cartArea{
   display: inline-block;
-  padding: 20px 60px;
   position: absolute;
-  bottom: 0;
-  background-color: #ffeb3b;
-  left: 55%;
-  transform: translateX(-55%);
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .outsidecart{
   height: 50px;
-  /*padding: 20px;*/
+  padding: 20px 60px;
+  background-color: #ffeb3b;
 }
 
 .insidecart img{
-  transform:scale(1.1,1.1);
-  /*height: 60px;*/
-  /*padding: 15px;*/
+  transform:scale(1.15,1.15);
 }
 
 .recent-score{

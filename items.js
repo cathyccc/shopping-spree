@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded",function(event){
   // setting up the game
   function startGame(){
     score = 0;
-    var playTime = 10;
+    var playTime = 20;
     time = playTime;
     playing = true;
     removeStart();
@@ -88,8 +88,8 @@ document.addEventListener("DOMContentLoaded",function(event){
     displayTime();
     displayQuit();
     displayCart();
-    // countdown();
-    for (var i=1; i<=2; i++){
+    countdown();
+    for (var i=1; i<=60; i++){
       addNewItem();
     };
   };
@@ -112,11 +112,11 @@ document.addEventListener("DOMContentLoaded",function(event){
     var newItem = occurance();
 
     var x = Math.round(Math.random() * (97 + 3) - 3);
-    var y = Math.round(Math.random() * (75));
+    var y = Math.round(Math.random() * (75 - 16) + 16);
 
     while (x < 14 && y < 6){
       var x = Math.round(Math.random() * (97 + 3) - 3);
-      var y = Math.ceil(Math.random()* 75);
+      var y = Math.ceil(Math.random()* (75 - 16) + 16);
     };
 
     newItem.style.left = x + '%';
@@ -153,6 +153,8 @@ document.addEventListener("DOMContentLoaded",function(event){
         cart.classList.remove('insidecart');
       },
       ondrop: function(event){
+        var cart = event.target;
+        cart.classList.remove('insidecart');
         var droppedItem = event.relatedTarget;
         score += parseInt(droppedItem.dataset.point);
         displayScore();
