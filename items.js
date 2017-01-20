@@ -85,11 +85,11 @@ document.addEventListener("DOMContentLoaded",function(event){
     playing = true;
     removeStart();
     displayScore();
-    displayCart();
-    displayQuit();
     displayTime();
-    countdown();
-    for (var i=1; i<=60; i++){
+    displayQuit();
+    displayCart();
+    // countdown();
+    for (var i=1; i<=2; i++){
       addNewItem();
     };
   };
