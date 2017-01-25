@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded",function(event){
       "http://image.flaticon.com/icons/svg/135/135739.svg",
       "http://image.flaticon.com/icons/svg/290/290406.svg",
       "http://image.flaticon.com/icons/svg/135/135559.svg",
-      "http://image.flaticon.com/icons/svg/186/186151.svg"
+      "https://image.flaticon.com/icons/svg/135/135694.svg"
     ];
     var imageRandom = Math.round(Math.random() * 3);
 
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded",function(event){
     displayQuit();
     displayCart();
     countdown();
-    for (var i=1; i<=60; i++){
+    for (var i=1; i<=70; i++){
       addNewItem();
     };
   };
@@ -111,12 +111,12 @@ document.addEventListener("DOMContentLoaded",function(event){
   function addNewItem(){
     var newItem = occurance();
 
-    var x = Math.round(Math.random() * (97 + 3) - 3);
-    var y = Math.round(Math.random() * (75 - 16) + 16);
+    var x = Math.round(Math.random() * (97 + 2) - 2);
+    var y = Math.round(Math.random() * (87 - 15) + 15);
 
-    while (x < 14 && y < 6){
-      var x = Math.round(Math.random() * (97 + 3) - 3);
-      var y = Math.ceil(Math.random()* (75 - 16) + 16);
+    while (15<x && x<70 && y>71){
+      var x = Math.round(Math.random() * (97 + 2) - 2);
+      var y = Math.round(Math.random() * (87 - 15) + 15);
     };
 
     newItem.style.left = x + '%';
@@ -232,15 +232,26 @@ document.addEventListener("DOMContentLoaded",function(event){
   // display start button
   function displayStart(){
     var beginDiv = document.createElement('div');
+    var title = document.createElement('div');
+    var logo = document.createElement('img');
     var link = document.createElement('a');
     var button = document.createElement('div');
     beginDiv.setAttribute('id','startPoint');
     beginDiv.className = 'start-point';
+    title.setAttribute('id','gameTitle');
+    title.innerHTML = "shopping spree";
+
+    logo.setAttribute('src','cart-logo.svg');
+    logo.setAttribute('id','logo');
+
     link.setAttribute("href","#");
     link.className = "start-button";
     link.setAttribute("id","item-maker");
     button.innerHTML = "start";
+
     link.append(button);
+    beginDiv.append(logo);
+    beginDiv.append(title);
     beginDiv.append(link);
     link.addEventListener('click', startGame);
 
@@ -283,6 +294,7 @@ document.addEventListener("DOMContentLoaded",function(event){
   };
 
   function endGame(){
+    playing = false;
     var clear = clearInterval(timerCountdown);
     console.log(timerCountdown);
     document.getElementById('app').innerHTML = "";

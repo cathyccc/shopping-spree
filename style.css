@@ -17,6 +17,16 @@ body{
   overflow: hidden;
 }
 
+#gameTitle{
+  font-family: 'Amatic SC', cursive;
+  font-size: 6em;
+}
+
+#logo{
+  width: 150px;
+  margin-left: -38px;
+}
+
 .item-low,
 .item-med,
 .item-high {
@@ -91,6 +101,7 @@ body{
 }
 
 .recent-score{
+  color: #03a9f4;
   font-size: 3em;
   font-family: 'Amatic SC', cursive;
   padding-top: 10px;
