@@ -302,6 +302,17 @@ document.addEventListener("DOMContentLoaded",function(event){
     displayRecent();
   };
 
+  function instructions(){
+    var instruction = document.createElement('a');
+    instruction.setAttribute("href","instruction.html");
+    instruction.setAttribute('id','instructionLink');
+    instruction.className = "instruction-link";
+    instruction.innerHTML = "instructions";
+    console.log(instruction);
+    document.getElementById('startPoint').append(instruction);
+  };
+
   // append start button
   displayStart();
+  instructions();
 });
