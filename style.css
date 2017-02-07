@@ -1,4 +1,4 @@
-body{
+.gameboard {
   margin: 0px;
   background-image: url("doodlegrid2.png");
   background-repeat: repeat;
